@@ -13,7 +13,7 @@ if __name__ == '__main__':
         elif op == '*':
             return f"{a} * {b} = {mul(a, b)}"
         else:
-            return "Unknown operator. Available operators: +, -, *, and /"
+            return "Unknown operator. Available operators: +, -, * and /"
 
     i = len(sys.argv) - 1
     if i != 3:
