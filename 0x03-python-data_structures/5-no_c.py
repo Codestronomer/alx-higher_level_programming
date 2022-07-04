@@ -9,5 +9,5 @@ def no_c(my_string):
             pass
         else:
             n_str += my_string[j]
-            j += 1
+        j += 1
     return n_str
