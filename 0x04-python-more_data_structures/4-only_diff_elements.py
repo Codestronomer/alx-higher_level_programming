@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-def only_dff_elements(set1, set2):
-    return (set1 ^ set2)
+def only_dff_elements(set_1, set_2):
+    return (set_1 ^ set_2)
