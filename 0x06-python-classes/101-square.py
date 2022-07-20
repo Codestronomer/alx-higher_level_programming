@@ -89,15 +89,15 @@ class Square:
         """return string representation of the square with the character #"""
         rtn_str = ""
         if not self.__size:
+            return rtn_str
+        for i in range(self.__position[1]):
             rtn_str += "\n"
-        else:
-            for i in range(self.__position[1]):
-                rtn_str += ""
-            for i in range(0, self.__size):
-                for k in range(self.__position[0]):
-                    rtn_str += " "
-                for j in range(self.__size):
-                    rtn_str += "#"
+        for i in range(0, self.__size):
+            for k in range(self.__position[0]):
+                rtn_str += " "
+            for j in range(self.__size):
+                rtn_str += "#"
+            if i is not (self.__size - 1):
                 rtn_str += "\n"
 
         return rtn_str
