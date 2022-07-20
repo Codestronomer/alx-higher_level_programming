@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 # 1-square.py
 # Rumide John <johnrumide6@gmail.com>
-"""Define a new class: """
+"""Private instance attribute a new class: """
 
 
-class Square:
+class Square(object):
     """Class Square representing a square."""
     def __init(self, size):
-        """ Initialize the square object"""
+        """ Initialize the square object size"""
         self.__size = size   
