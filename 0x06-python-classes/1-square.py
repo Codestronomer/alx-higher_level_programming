@@ -4,7 +4,7 @@
 """Private instance attribute a new class: """
 
 
-class Square(object):
+class Square:
     """Class Square representing a square."""
     def __init(self, size):
         """ Initialize method that stores the size of square
@@ -12,4 +12,4 @@ class Square(object):
         Args:
             param1 (int): size of the square
         """
-        self.__size = size   
+        self.__size = size
