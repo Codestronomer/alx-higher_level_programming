@@ -37,3 +37,30 @@ class Square:
             raise ValueError("size must be >= 0")
         else:
             self.__size = size
+
+    def __eq__(self, other):
+        """checks for equality with another instance"""
+        return self.__dict__ == other.__dict__
+
+    def __lt__(self, other):
+        """checks if instance is less than another instance"""
+        return self.__size < other.__size
+
+    def __le__(self, other):
+        """checks if less than or equal to another instance"""
+        return self.__size <= other.__size
+
+    def __ne__(self, other):
+        """checks if not equal to another instance"""
+        return self.__dict__ != other.__dict__
+
+    def __gt__(self, other):
+        """checks if greater than another instance"""
+        return self.__size > other.__size
+
+    def __ge__(self, other):
+        """checks if greater than or equal to another instance"""
+        return self.__size >= other.__size
+
+
+
