@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 # 100-singly_linked_list.py
 # John Rumide <johnrumide6@gmail.com>
+"""Defines a singly linked list class and a Node class"""
+
+
 class Node:
     """Class representing a Node of a singly linked list"""
     def __init__(self, data, next_node=None):
