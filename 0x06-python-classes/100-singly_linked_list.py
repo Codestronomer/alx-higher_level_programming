@@ -13,14 +13,8 @@ class Node:
             param1 (int): data to save in node
             param2 (Node): next node in a singly linked list
         """
-        if not isinstance(data, int):
-            raise TypeError("data must be an integer")
-        else:
-            self.__data = data
-        if not isinstance(next_node, Node) or next_node is not None:
-            raise TypeError("next_node must be a Node object")
-        else:
-            self.__next_node = next_node
+        self.data = data
+        self.next_node = next_node
 
     @property
     def data(self):
@@ -31,7 +25,7 @@ class Node:
         if not isinstance(value, int):
             raise TypeError("data must be an integer")
         else:
-            self.__data = data
+            self.__data = value
 
     @property
     def next_node(self):
@@ -39,10 +33,9 @@ class Node:
 
     @next_node.setter
     def next_node(self, value):
-        if not isinstance(value, Node) or value is not None:
+        if not isinstance(value, Node) and value is not None:
             raise TypeError("next_node must be a Node object")
-        else:
-            self.__next_node = value
+        self.__next_node = value
 
 
 class SinglyLinkedList:
