@@ -7,5 +7,9 @@
 class Square(object):
     """Class Square representing a square."""
     def __init(self, size):
-        """ Initialize the square object size"""
+        """ Initialize method that stores the size of square
+
+        Args:
+            param1 (int): size of the square
+        """
         self.__size = size   
