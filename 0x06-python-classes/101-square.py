@@ -92,7 +92,7 @@ class Square:
             rtn_str += "\n"
         else:
             for i in range(self.__position[1]):
-                rtn_str += "\n"
+                rtn_str += ""
             for i in range(0, self.__size):
                 for k in range(self.__position[0]):
                     rtn_str += " "
