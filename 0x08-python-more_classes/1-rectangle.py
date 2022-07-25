@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 # 1-rectangle.py
 # John Rumide <johnrumide6@gmail.com>
-""" Defines a rectangle class"""
+""" Defines a rectangle class:"""
 
 
 class Rectangle:
     """ A class representing a rectangle"""
-
     def __init__(self, width=0, height=0):
         """Initiatization an instance when an object is created
 
@@ -14,8 +13,14 @@ class Rectangle:
             param1 (int): width of the rectangle
             param2 (int): height of the rectangle
         """
-        self.__width = width
-        self.__height = height
+        if type(width) == int:
+            self.__width = width
+        else:
+            raise TypeError("width must be an integer")
+        if type(height) == int:
+            self.__height = height
+        else:
+            raise TypeError("height must be an integer")
 
     @property
     def width(self):
