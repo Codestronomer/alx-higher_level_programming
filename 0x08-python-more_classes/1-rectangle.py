@@ -13,7 +13,6 @@ class Rectangle:
             param1 (int): width of the rectangle
             param2 (int): height of the rectangle
         """
-        
         if not isinstance(width, int):
             raise TypeError("width must be an integer")
         elif width < 0:
