@@ -13,14 +13,20 @@ class Rectangle:
             param1 (int): width of the rectangle
             param2 (int): height of the rectangle
         """
-        if type(width) == int:
-            self.__width = width
-        else:
+        
+        if not isinstance(width, int):
             raise TypeError("width must be an integer")
-        if type(height) == int:
-            self.__height = height
+        elif width < 0:
+            raise ValueError("width must be >= 0")
         else:
+            self.__width = value
+
+        if not isinstance(height, int):
             raise TypeError("height must be an integer")
+        elif height < 0:
+            raise ValueError("height must be >= 0")
+        else:
+            self.__height = value
 
     @property
     def width(self):
