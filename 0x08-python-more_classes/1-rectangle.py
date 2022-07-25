@@ -8,14 +8,19 @@ class Rectangle:
     """ A class representing a rectangle"""
 
     def __init__(self, width=0, height=0):
-        """Initiatization an instance when an object is created"""
+        """Initiatization an instance when an object is created
+
+        Args:
+            param1 (int): width of the rectangle
+            param2 (int): height of the rectangle
+        """
         self.__width = width
         self.__height = height
 
     @property
     def width(self):
         """Retrieves the width of the rectangle"""
-        return self.__width
+        return (self.__width)
 
     @width.setter
     def width(self, value):
@@ -30,7 +35,7 @@ class Rectangle:
     @property
     def height(self):
         """Retrieves the height of the rectangle"""
-        return self.__height
+        return (self.__height)
 
     @height.setter
     def height(self, value):
