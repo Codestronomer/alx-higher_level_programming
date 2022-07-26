@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# 2-rectangle.py
+# 3-rectangle.py
 """ Defines a rectangle class:"""
 
 
@@ -64,3 +64,19 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return (0)
         return ((self.__width + self.__height) * 2)
+
+    def __str__(self):
+        """string representation of the rectangle
+
+        Returns:
+            returns the string representation of the object
+        """
+        rtn_str = ''
+        if self.__width == 0 or self.__height == 0:
+            return rtn_str
+        for i in range(self.__height):
+            for j in range(self.__width):
+                rtn_str += '#'
+            if i != (self.__height - 1):
+                rtn_str += '\n'
+        return (rtn_str)
