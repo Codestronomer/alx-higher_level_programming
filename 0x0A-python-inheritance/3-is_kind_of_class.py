@@ -1,13 +1,12 @@
 #!/usr/bin/python3
+# 3-is_kind_of_class.py
+""" File name : 3-is_kind_of_class.py
+    It is not allowed to import any module
+"""
+
+
 def is_kind_of_class(obj, a_class):
-    """ Function that returns True/False if obj is an instance of a_class
-
-    Args:
-        obj: object
-        a_class: class type
-
-    Returns:
-        True if obj is an instance of a_class
-        False, otherwise
-    """
-    return isinstance(obj, a_class)
+    """Define if a obj is instance of class"""
+    if isinstance(obj, a_class):
+        return True
+    return False
