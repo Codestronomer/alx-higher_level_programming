@@ -4,7 +4,12 @@
 
 
 class MyList(list):
-    """Represents a MyList class"""
+    """Represents a MyList class
+    
+    Args:
+        list: class list
+    """
+
     def print_sorted(self):
         """prints the list, but sorted ascending"""
-        print(sorted(list))
+        print(sorted(list.copy()))
