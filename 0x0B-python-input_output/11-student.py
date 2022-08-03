@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    filename: 11-student.py
+    filename: 10-student.py
 
     defines a student class
 """
@@ -33,6 +33,11 @@ class Student:
             return self.__dict__
 
     def reload_from_json(self, json):
-        """replaces all attributes of the Student instance"""
-        for k, v in self.__dict__.items():
-            self.__dict__[k] = json[k]
+        """
+            replaces all attributes of the student instance
+
+        Args:
+            arg1: (dict)json
+        """
+        for k, v in json.items():
+            setattr(self, k, v)
