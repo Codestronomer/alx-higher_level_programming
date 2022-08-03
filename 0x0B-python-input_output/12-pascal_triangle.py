@@ -8,14 +8,21 @@ def pascal_triangle(n):
     """
     returns a list of lists of integers representing the pascal's triangle
     """
-    if n <= 0:
-        return ([])
-    p_triange = [[1]]
-    for i in range(1, n):
-        sub_l = [1]
-        prev_l = p_triangle[i - 1]
-        for j in range(1, i):
-            sub_l.append(prev_l[j] + prev_l[j - 1])
-        sub_l.append(1)
-        triangle.append(row)
-    return (triangle)
+    matrix = []
+    prev = []
+
+    for i in range(n):
+        res_list = []
+        p1 = -1
+        p2 = 0
+        for j in range(len(prev) + 1):
+            if p1 == -1 or p2 == len(prev):
+                res_list += [1]
+            else:
+                res_list += [prev[p1] + prev[p2]]
+            p1 += 1
+            p2 += 1
+        matrix.append(res_list)
+        prev = res_list[:]
+
+    return matrix
