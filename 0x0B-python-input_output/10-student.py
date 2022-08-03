@@ -25,8 +25,9 @@ class Student:
         """retrieves a dictionary representation of a Student instance"""
         if attrs and isinstance(attrs, list):
             dct = {}
-            for i in attrs:
-                dct[i] = self.__dict__[i]
+            for k, v in self.__dict__.items():
+                if k in attrs:
+                    dct[k] = v
             return dct
         else:
             return self.__dict__
