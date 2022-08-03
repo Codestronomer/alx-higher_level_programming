@@ -13,6 +13,6 @@ if __name__ == '__main__':
     try:
         cnt = load_from_json_file(f)
     except FileNotFoundError:
-        items = []
-    cnt.extend(sys.argv[1:)
+        cnt = []
+    cnt.extend(sys.argv[1:])
     save_to_json_file(cnt, f)
