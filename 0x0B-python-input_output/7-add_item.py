@@ -10,7 +10,9 @@ save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
 
 if __name__ == '__main__':
     f = 'add_item.json'
-    cnt = load_from_json_file(f)
-    for i in sys.argv[1:]:
-        cnt.append(i)
+    try:
+        cnt = load_from_json_file(f)
+    except FileNotFoundError:
+        items = []
+    cnt.extend(sys.argv[1:)
     save_to_json_file(cnt, f)
