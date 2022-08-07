@@ -48,6 +48,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """returns the list of the JSON string representation json_string"""
         if json_string is None or len(json_string) == 0:
             return []
         else:
@@ -61,3 +62,18 @@ class Base:
         dum = cls(1, 2, 4, 5)
         dum.update(**dictionary)
         return dum
+
+    @classmethod
+    def load_from_file(cls):
+        filename = f"{cls.__name__}.json"
+        try:
+            with open(filename, 'r') as f:
+                str = f.read()
+        except FileNotFoundError:
+            str = ""
+        json_list = cls.from_json_string(str)
+        inst_list = []
+        for i in json_list:
+            inst_list.append(cls.create(**i))
+        return inst_list
+            
