@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ defines a Base class """
 import json
+import csv
+import turtle
 
 class Base:
     """ represents a Base class """
@@ -59,7 +61,7 @@ class Base:
         """returns an instance with all attributes already set"""
         if cls is Base:
             raise Exception("Must be called via a subclass")
-        dum = cls(1, 2, 4, 5)
+        dum = cls(1, 1, 0, 0)
         dum.update(**dictionary)
         return dum
 
@@ -76,4 +78,69 @@ class Base:
         for i in json_list:
             inst_list.append(cls.create(**i))
         return inst_list
-            
+    
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serializes objects into a csv file"""
+        filename = f"{cls.__name__}.csv"
+
+        if type(list_objs) != list and list_objs is not None:
+                raise TypeError("list_objs must be a list of instances")
+
+        with open(filename, 'w') as csvfile:
+            if list_objs is not None:
+                list_objs = [x.to_dictionary() for x in list_objs]
+                if cls.__name__ == 'Rectangle':
+                    fieldnames = ['id', 'width', 'height', 'x', 'y']
+                elif cls.__name__ == 'Square':
+                    fieldnames = ['id', 'size', 'x', 'y']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(list_objs)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializees CSV format from a csv file"""
+        filename = f"{cls.__name__}.csv"
+        list_objs = []
+
+        try:
+            with open(filename, 'r') as csvfile:
+                reader = csv.DictReader(csvfile)
+
+                for i in reader:
+                    for k, v in i.items():
+                        i[k] = int(v)
+                    list_objs.append(cls.create(**i))
+        except FileNotFoundError:
+            pass
+
+        return list_objs
+
+    @staticmethod
+    def draw(rectangles_arr, squares_arr):
+        """
+        Draws rectangles and squares with turtle graphics
+        """
+
+        width, height = 200, 150
+        ts = turtle.getscreen()
+        turtle.screensize(width, height)
+        turtle.setworldcoordinates(0, 0, width, height)
+        turtle.pensize(5)
+        shapes = rectangles_arr + squares_arr
+        for shape in shapes:
+            fill_color = (random(), random(), random())
+            pen_color = (random(), random(), random())
+            turtle.color(fill_color, pen_color)
+            turtle.setpos((shape.x, shape.y))
+            turtle.down()
+            turtle.begin_fill()
+            for i in range(2):
+                turtle.forward(shape.height)
+                turtle.left(90)
+                turtle.forward(shape.width)
+                turtle.left(90)
+            turtle.end_fill()
+            turtle.up()
+        ts.exitonclick()
