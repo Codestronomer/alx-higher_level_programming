@@ -5,6 +5,7 @@ import csv
 import turtle
 from random import Random
 
+
 class Base:
     """ represents a Base class """
     __nb_objects = 0
@@ -56,9 +57,9 @@ class Base:
             return []
         else:
             return json.loads(json_string)
-    
+
     @classmethod
-    def create(cls,**dictionary):
+    def create(cls, **dictionary):
         """returns an instance with all attributes already set"""
         if cls is Base:
             raise Exception("Must be called via a subclass")
@@ -79,14 +80,14 @@ class Base:
         for i in json_list:
             inst_list.append(cls.create(**i))
         return inst_list
-    
+
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """Serializes objects into a csv file"""
         filename = f"{cls.__name__}.csv"
 
-        if type(list_objs) != list and list_objs is not None:
-                raise TypeError("list_objs must be a list of instances")
+        if (type(list_objs) != list) and list_objs is not None:
+            raise TypeError("list_objs must be a list of instances")
 
         with open(filename, 'w') as csvfile:
             if list_objs is not None:
