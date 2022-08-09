@@ -3,6 +3,7 @@
 import json
 import csv
 import turtle
+from random import Random
 
 class Base:
     """ represents a Base class """
