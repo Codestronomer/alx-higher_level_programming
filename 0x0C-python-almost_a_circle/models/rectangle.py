@@ -100,7 +100,7 @@ class Rectangle(Base):
     def display(self):
         """prints out the Rectangle instance with the character '#' """
         import sys
-        
+
         for i in range(self.__y):
             sys.stdout.write('\n')
         for j in range(self.__height):
@@ -126,7 +126,6 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
-
 
     def to_dictionary(self):
         """method returns the dictionary representation of a Rectangle"""
