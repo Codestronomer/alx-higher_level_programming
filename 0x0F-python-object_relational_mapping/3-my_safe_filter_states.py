@@ -1,36 +1,48 @@
 #!/usr/bin/python3
-# 3-my_safe_filter_states.py
-
 """
-A script that takes in an argument and displays all values in
-the states table of hbtn_0e_0_usa where name matches the argument
+This module takes in an argument
+and displays all values in the states table of hbtn_0e_0_usa
+where name matches the argument.
+Safe from injection
 """
-
 import MySQLdb
 from sys import argv
 
-if __name__ == "__main__":
 
-    # connection
-    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
-    cur = db.cursor()
+def authenthicate(string):
+    """Prevents SQL Injection"""
 
-    if ';' not in argv[4]:
-        value = argv[4]
-    else:
-        idx = argv[4].index(";")
-        value = argv[4][1: idx - 1]
+    new_string = ""
+    if string[0] != "'" or string[0] != '"':
+        i = 0
+        while i < len(string):
+            if string[i] == '"' or string[i] == "'":
+                break
+            new_string += string[i]
+            i += 1
+        return new_string
 
-    # Query
-    cur.execute(
-            "SELECT * FROM states WHERE name='{name}' ORDER BY states.id"
-            .format(name=value)
-            )
-    rows = cur.fetchall()
+
+if __name__ == '__main__':
+
+    # credentials
+    username = argv[1]
+    password = argv[2]
+    database = argv[3]
+    name = authenthicate(argv[4])
+
+    db = MySQLdb.connect(
+        user=username,
+        passwd=password,
+        host='localhost',
+        db=database
+    )
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM states WHERE name = '{}'".format(name))
+    rows = cursor.fetchall()
+
     for row in rows:
-        if row[1] == argv[4]:
-            print(row)
+        print(row)
 
-    # Close connection
-    cur.close()
+    cursor.close()
     db.close()
