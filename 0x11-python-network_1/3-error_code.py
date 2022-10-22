@@ -7,10 +7,9 @@ import urllib.error
 import sys
 
 if __name__ == "__main__":
-    url = sys.argv[1]
-    with urllib.request.urlopen(url) as response:
-        try:
-            page = response.read()
-            print(page.decode(encoding="utf-8"))
-        except urllib.error.HTTPError as e:
-            print("Error code: ", e.code)
+    try:
+        url = sys.argv[1]
+        with urllib.request.urlopen(url) as response:
+            page = response.read().decode(encoding="utf-8")
+    except urllib.error.HTTPError as e:
+        print(f"Error code: {e.code}")
