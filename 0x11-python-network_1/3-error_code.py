@@ -3,6 +3,7 @@
 script takes ina URL and displays the body of the response
 """
 import urllib.request
+import urllib.error
 import sys
 
 if __name__ == "__main__":
@@ -11,5 +12,5 @@ if __name__ == "__main__":
         try:
             page = response.read()
             print(page.encode("utf-8"))
-        except HTTPError as e:
+        except urllib.error.HTTPError as e:
             print("Error code: ", e.code)
