@@ -11,9 +11,9 @@ request(process.argv[2],
         movie.characters.forEach(actor => {
           if (actor.includes('18')) {
             movie_count++;
-          };
+          }
         });
       });
       console.log(movie_count);
-    };
+    }
   });
