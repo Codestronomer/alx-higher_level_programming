@@ -14,6 +14,6 @@ request(process.argv[2],
           }
         });
       });
-      console.log(movie_count);
+      console.log(movieCount);
     }
   });
