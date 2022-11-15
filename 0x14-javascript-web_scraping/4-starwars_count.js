@@ -6,14 +6,14 @@ request(process.argv[2],
     if (err == null) {
       const res = JSON.parse(response.body);
       // console.log(res.results);
-      movie_count = 0;
+      let movieCount = 0;
       res.results.forEach(movie => {
         movie.characters.forEach(actor => {
           if (actor.includes('18')) {
-            movie_count++;
-          };
+            movieCount++;
+          }
         });
       });
       console.log(movie_count);
-    };
+    }
   });
