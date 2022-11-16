@@ -9,7 +9,7 @@ request(`https://swapi-api.hbtn.io/api/films/${process.argv[2]}`,
     }
   });
 
-function printActor(characters, i) {
+function printActor (characters, i) {
   const actor = characters[i];
   if (actor) {
     request(actor, (err, response, body) => {
